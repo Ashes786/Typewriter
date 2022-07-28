@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(46, 43, 43);
+}
+
+p {
+    font-family: consolas, monospace;
+    font-size: 2em;
+    color: rgb(196, 226, 226);
+}
+
+.Animation {
+    position: relative;
+}
+
+.Animation::after {
+    content: '|';
+    position: absolute;
+    width: 100%;
+    right: 0;
+    color: rgb(196, 226, 226);
+    background-color: rgb(46, 43, 43);
+    animation: typing 13s steps(60),
+                line 1s infinite;
+}
+
+@keyframes typing {
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes line {
+    50% {
+        color: transparent;
+    }
+}
