@@ -1,38 +1,34 @@
-* {
-    margin: 0;
-    padding: 0;
-}
 
 body {
-    font-family: consolas,monospace;
-    font-weight: 700;
+    background: rgb(44, 44, 44);
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.console-container {
+    font-family: 'Mochiy Pop One', sans-serif;
     font-size: 2em;
-    padding: 200px;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:#484c4d;
-    color:#cbdfe0
-  }
-  
-  .type {
-    color:#0000;
-    background:
-      linear-gradient(-90deg, #cbdfe0 5px,#0000 0) 10px 0,
-      linear-gradient(#cbdfe0 0 0) 0 0;
-    background-size:calc(var(--n)*1ch) 200%;
-    -webkit-background-clip:padding-box,text;
-    background-clip:padding-box,text;
-    background-repeat:no-repeat;
-    animation: 
-     b .7s infinite steps(1),   
-     t calc(var(--n)*.1s) steps(var(--n)) forwards;
-  }
-  
-  @keyframes t{
-    from {background-size:0 200%}
-  }
-  @keyframes b{
-    50% {background-position:0 -100%,0 0}
-  }
+    text-align: left;
+    height: 200px;
+    width: 600px;
+    display: block;
+    position: absolute;
+    color: lightblue;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.console-cursor {
+    display: inline-block;
+    position: relative;
+    top: -0.14em;
+    left: 0;
+}
+
+
+ 
