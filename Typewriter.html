@@ -4,13 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dear Diary</title>
     <link rel="stylesheet" href="Typewriter.css">
 </head>
 <body>
-    <div>
-        <span class="type" style="--n:181">Dear Diary, <br>you know how people behave in real world? Their attitude is so rude towards us. The only good friend of mine are you! You keep my secrets. I love your my sweet diary!</span>
+    <div class="console-container"><span id="text"></span>
+        <div class="console-cursor" id="console">&#124;</div>
+        <!--
+        <span class="type" style="--n:112">Dear Diary ❤, <br><br>I want to say that you are my best friend! And I hope you'll always be like this.<br>Lots of love!</span>
+        -->
     </div>
+
+    <script>
+        consoleText (["Dear Diary ❤, I want to say that you are my best friend! And I hope you'll always be like this. Lots of love!", "I don't know why people are againt me, but I know you're always with me"] , "text", ["blue", "white","red","orange", "yellow"]);
+        function consoleText(words, id, colors){
+            if (colors === undefined) color = ['lightblue'];
+            var visible = true;
+            var con = document.getElementById('console');
+            var letterCount = 1;
+            var x = 1;
+            var waiting = false;
+            var target = document.getElementById(id)
+            target.setAttribute('style','color: ' +colors[0])
+            window.setInterval( function() {
+                if (letterCount === 0 && waiting === false) {
+                    waiting = true;
+                    target.innerHTML = words[0].substring(0, letterCount)
+                    window.setTimeout( function() {
+                        var usedcolor = colors.shift();
+                        colors.push(usedcolor);
+                        var usedword = words.shift();
+                        words.push(usedword);
+                        x = 1;
+                        target.setAttribute('style', 'color: ' +colors[0])
+                        letterCount += x;
+                        waiting = false;
+                    }, 500)
+                }
+                else if (letterCount === words[0].length + 1 && waiting === false) {
+                    waiting = true;
+                    window.setTimeout( function() {
+                        x = -1;
+                        letterCount += x;
+                        waiting = false;
+                    }, 500)
+                }
+
+                else if (waiting === false) {
+                    target.innerHTML = words[0].substring(0, letterCount)
+                    letterCount += x;
+                }
+            }, 120)
+
+            window.setInterval( function() {
+                if (visible === true) {
+                    con.className = 'console-cursor hidden'
+                    visible = false;
+                }
+                else {
+                    con.className = 'console-cursor'
+                    visible = true;
+                }
+            }, 400)
+        }
+    </script>
 
     
 </body>
